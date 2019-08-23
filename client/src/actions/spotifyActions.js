@@ -2,7 +2,8 @@ import {
   SET_NOW_PLAYING,
   SET_LOADING,
   SET_ARTISTS,
-  SET_TRACKS
+  SET_TRACKS,
+  SHOW_NOW_PLAYING
 } from "../actions/Types";
 
 export const setNowPlaying = song => {
@@ -25,6 +26,12 @@ export const setNowPlaying = song => {
   return {
     type: SET_NOW_PLAYING,
     payload: displayed
+  };
+};
+
+export const setShowNowPlaying = () => {
+  return {
+    type: SHOW_NOW_PLAYING
   };
 };
 

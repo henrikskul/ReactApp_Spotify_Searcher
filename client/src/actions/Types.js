@@ -6,3 +6,5 @@ export const SET_NOW_PLAYING = "SET_NOW_PLAYING";
 export const SET_ARTISTS = "SET_ARTISTS";
 export const SET_TRACKS = "SET_TRACKS";
 export const GET_USER_DETAIL = "GET_USER_DETAIL";
+export const TOKEN_ERROR = "TOKEN_EROR";
+export const SHOW_NOW_PLAYING = "SHOW_NOW_PLAYING";

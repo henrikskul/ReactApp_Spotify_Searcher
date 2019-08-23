@@ -18,7 +18,6 @@ const SearchTracks = ({
     if (text.current.value !== "") {
       spotifyApi.searchTracks(text.current.value).then(
         data => {
-          console.log('Search Tracks by ""', data);
           setTracks(data);
         },
         function(err) {
@@ -26,7 +25,6 @@ const SearchTracks = ({
         }
       );
     }
-    console.log(tracks);
   };
 
   return (

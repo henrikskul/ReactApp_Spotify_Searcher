@@ -19,14 +19,12 @@ const SearchArtists = ({
       spotifyApi.searchArtists(text.current.value).then(
         data => {
           setArtists(data);
-          console.log('Search artists by ""', data);
         },
         function(err) {
           console.error(err);
         }
       );
     }
-    console.log(artists);
   };
 
   return (

@@ -2,11 +2,13 @@ import {
   SET_NOW_PLAYING,
   SET_LOADING,
   SET_ARTISTS,
-  SET_TRACKS
+  SET_TRACKS,
+  SHOW_NOW_PLAYING
 } from "../actions/Types";
 
 const initialstate = {
   nowPlaying: {},
+  showNowPlaying: false,
   artists: [],
   tracks: [],
   loading: false
@@ -19,6 +21,11 @@ export default (state = initialstate, action) => {
         ...state,
         nowPlaying: action.payload,
         loading: false
+      };
+    case SHOW_NOW_PLAYING:
+      return {
+        ...state,
+        showNowPlaying: true
       };
 
     case SET_ARTISTS:

@@ -3,7 +3,7 @@ import {
   LOGG_INN,
   SET_LOADING,
   GET_TOKEN,
-  LOG_IN_ERROR,
+  TOKEN_ERROR,
   GET_USER_DETAIL
 } from "./Types";
 
@@ -33,10 +33,11 @@ export const logInUser = () => async dispatch => {
 
 // gets users detail
 export const getUserDetail = data => {
-  console.log(data.display_name);
+  setLoading();
+
   return {
     type: GET_USER_DETAIL,
-    payload: data.display_name
+    payload: data
   };
 };
 
@@ -54,6 +55,12 @@ export const getToken = () => async dispatch => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const setTokenError = () => {
+  return {
+    type: TOKEN_ERROR
+  };
 };
 
 // Set loading to true

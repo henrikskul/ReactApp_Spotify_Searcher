@@ -3,17 +3,21 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { setNowPlaying } from "../../actions/spotifyActions";
+import { setTokenError } from "../../actions/userActions";
 
 const NowPlaying = ({
-  spotifyState: { nowPlaying },
-  user: { spotifyApi, loggedIn },
-  setNowPlaying
+  spotifyState: { nowPlaying, showNowPlaying },
+  user: { spotifyApi, loggedIn, tokenError },
+  setNowPlaying,
+  setTokenError
 }) => {
   useEffect(() => {
-    if (loggedIn) {
+    if (showNowPlaying && loggedIn) {
       spotifyApi
         .getMyCurrentPlaybackState()
-        .then(res => setNowPlaying(res))
+        .then(res => {
+          setNowPlaying(res);
+        })
         .catch(err => {
           console.log(err.response);
           console.log(err);
@@ -22,7 +26,7 @@ const NowPlaying = ({
     }
 
     // eslint-disable-next-line
-  }, [loggedIn]);
+  }, [loggedIn, showNowPlaying]);
 
   return (
     <Fragment>
@@ -32,12 +36,6 @@ const NowPlaying = ({
           <div className="card">
             <div className="card-image">
               <img src={nowPlaying.img} alt="" />
-              <a
-                className="btn-floating halfway-fab waves-effect waves-light red"
-                href="!#"
-              >
-                <i className="material-icons">add</i>
-              </a>
             </div>
             <div className="card-content">
               <span className="card-title">{nowPlaying.name}</span>
@@ -53,7 +51,8 @@ const NowPlaying = ({
 NowPlaying.propTypes = {
   spotifyState: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  setNowPlaying: PropTypes.func.isRequired
+  setNowPlaying: PropTypes.func.isRequired,
+  setTokenError: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   spotifyState: state.spotifyState,
@@ -62,5 +61,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setNowPlaying }
+  { setNowPlaying, setTokenError }
 )(NowPlaying);
