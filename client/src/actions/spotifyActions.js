@@ -13,13 +13,12 @@ export const setNowPlaying = song => {
       name: song.item.name,
       artist: song.item.album.artists[0].name,
       img: song.item.album.images[0].url,
-      msg: " fine",
       preview_url: song.item.preview_url
     };
   } else {
     displayed = {
       name: "You are not playing any songs",
-      msg: ""
+      artist: "Sometimes this takes a while to get if you are playing a song"
     };
   }
 

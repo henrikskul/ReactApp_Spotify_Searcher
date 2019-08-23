@@ -1,5 +1,11 @@
 import axios from "axios";
-import { LOGG_INN, SET_LOADING, GET_TOKEN, LOG_IN_ERROR } from "./Types";
+import {
+  LOGG_INN,
+  SET_LOADING,
+  GET_TOKEN,
+  LOG_IN_ERROR,
+  GET_USER_DETAIL
+} from "./Types";
 
 // method to get accsess_token
 const getHashParams = () => {
@@ -16,7 +22,6 @@ const getHashParams = () => {
 export const logInUser = () => async dispatch => {
   try {
     const res = await axios.get("/login");
-
     dispatch({
       type: LOGG_INN,
       payload: res.data
@@ -24,6 +29,15 @@ export const logInUser = () => async dispatch => {
   } catch (err) {
     console.log(err);
   }
+};
+
+// gets users detail
+export const getUserDetail = data => {
+  console.log(data.display_name);
+  return {
+    type: GET_USER_DETAIL,
+    payload: data.display_name
+  };
 };
 
 // get token from spotify api

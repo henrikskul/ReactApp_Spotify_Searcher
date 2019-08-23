@@ -4,17 +4,32 @@ import { connect } from "react-redux";
 
 import { logInUser } from "../../actions/userActions";
 
-const LogIn = ({ logInUser, user: { authUri } }) => {
+const LogIn = ({ logInUser, user: { authUri, showUri, loggedIn } }) => {
   const onClick = () => {
     logInUser();
   };
 
   return (
     <div className="col s12 m12">
-      <a href={"#!"} onClick={onClick} className="btn btn-primary">
-        Log in with Spotify
-      </a>
-      <a href={authUri}>{authUri}</a>
+      {!loggedIn ? (
+        !showUri ? (
+          <a href={"#!"} onClick={onClick}>
+            <button
+              className="btn waves-effect waves-light"
+              type="submit"
+              name="action"
+            >
+              Log in with Spotify<i className="material-icons right">send</i>
+            </button>
+          </a>
+        ) : (
+          <a href={authUri} className="btn btn-primary">
+            Please press again (this will be fixed)
+          </a>
+        )
+      ) : (
+        <div />
+      )}
     </div>
   );
 };

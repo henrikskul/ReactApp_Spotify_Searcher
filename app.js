@@ -12,10 +12,13 @@ var request = require("request"); // "Request" library
 var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
+const path = require("path|");
 
-var client_id = require("./config/keys").client_id; // Your client id
-var client_secret = require("./config/keys").client_secret; // Your secret
-var redirect_uri = require("./config/keys").redirect_uri; // Your redirect uri
+var client_id = process.env.CLIENT_ID || require("./config/keys").client_id; // Your client id
+var client_secret =
+  process.env.CLIENT_SECRET || require("./config/keys").client_secret; // Your secret
+var redirect_uri =
+  process.env.REDIRECT_URI || require("./config/keys").redirect_uri; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -37,10 +40,7 @@ var stateKey = "spotify_auth_state";
 
 var app = express();
 
-app
-  .use(express.static(__dirname + "/public"))
-  .use(cors())
-  .use(cookieParser());
+app.use(cors()).use(cookieParser());
 
 app.get("/login", function(req, res) {
   try {
@@ -171,5 +171,4 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
-console.log("Listening on 5000");
-app.listen(5000);
+app.listen(process.env.PORT || 5000, () => console.log("Listening on 5000"));

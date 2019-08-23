@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, Fragment } from "react";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
@@ -30,39 +30,43 @@ const SearchTracks = ({
   };
 
   return (
-    <div className="col s12 m12">
-      <h4 className="header">Search Tracks</h4>
-      <nav>
-        <div className="nav-wrapper">
-          <form>
-            <div className="input-field">
-              <input
-                id="search"
-                type="search"
-                placeholder="Search Tracks..."
-                ref={text}
-                onChange={onChange}
-              />
-              <label className="label-icon" htmlFor="search">
-                <i className="material-icons">search</i>
-              </label>
-              <i className="material-icons">close</i>
+    <Fragment>
+      {loggedIn && (
+        <div className="col s12 m12">
+          <h4 className="header">Search Tracks</h4>
+          <nav>
+            <div className="nav-wrapper">
+              <form>
+                <div className="input-field">
+                  <input
+                    id="search"
+                    type="search"
+                    placeholder="Search Tracks..."
+                    ref={text}
+                    onChange={onChange}
+                  />
+                  <label className="label-icon" htmlFor="search">
+                    <i className="material-icons">search</i>
+                  </label>
+                  <i className="material-icons">close</i>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
-      </nav>
+          </nav>
 
-      <div className="card scroll-box">
-        <div className="card-content">
-          <ul className="collection">
-            {!loading &&
-              tracks.map((track, i) => (
-                <TrackItem track={track} key={track.id} index={i} />
-              ))}
-          </ul>
+          <div className="card scroll-box">
+            <div className="card-content">
+              <ul className="collection">
+                {!loading &&
+                  tracks.map((track, i) => (
+                    <TrackItem track={track} key={track.id} index={i} />
+                  ))}
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </Fragment>
   );
 };
 

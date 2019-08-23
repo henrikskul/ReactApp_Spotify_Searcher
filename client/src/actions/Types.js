@@ -5,4 +5,4 @@ export const SET_LOADING = "SET_LOADING";
 export const SET_NOW_PLAYING = "SET_NOW_PLAYING";
 export const SET_ARTISTS = "SET_ARTISTS";
 export const SET_TRACKS = "SET_TRACKS";
-export const GET_URESNAME = "GET_USERNAME";
+export const GET_USER_DETAIL = "GET_USER_DETAIL";
