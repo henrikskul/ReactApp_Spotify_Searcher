@@ -35,7 +35,7 @@ module.exports = {
 
 ## Running the examples
 
-In order to run the app on local machine, use
+In order to run the app on local machine, go to root directory and use
 
     $ npm run dev
 
