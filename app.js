@@ -19,6 +19,7 @@ var client_secret =
   process.env.CLIENT_SECRET || require("./config/keys").client_secret; // Your secret
 var redirect_uri =
   process.env.REDIRECT_URI || require("./config/keys").redirect_uri; // Your redirect uri
+const redirect = process.env.REDIRECT || require("./config/keys").redirect;
 
 /**
  * Generates a random string containing numbers and letters
@@ -116,7 +117,7 @@ app.get("/callback", function(req, res) {
 
         // we can also pass the token to the browser to make requests from there
         res.redirect(
-          (process.env.REDIRECT || "http://localhost:3000/#") +
+          redirect +
             querystring.stringify({
               access_token: access_token,
               refresh_token: refresh_token

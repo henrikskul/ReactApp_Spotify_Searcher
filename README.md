@@ -1,35 +1,39 @@
-# Spotify Accounts Authentication Examples
+# ReactAPP Spotify Search
 
-This project contains basic demos showing the different OAuth 2.0 flows for [authenticating against the Spotify Web API](https://developer.spotify.com/web-api/authorization-guide/).
+This i an React App that fetch data from the Spotify wep api. The app uses Redux for state management, Materialize for design and spotify-web-api-js to fetch data easier.
 
-These examples cover:
+## Authenticating code
 
-* Authorization Code flow
-* Client Credentials flow
-* Implicit Grant flow
+The authenticating code against the Spotify Web API in "app.js" is basicly made by cloning [This project](https://github.com/spotify/web-api-auth-examples) and take whats nessesary from there.
 
 ## Installation
 
-These examples run on Node.js. On [its website](http://www.nodejs.org/download/) you can find instructions on how to install it. You can also follow [this gist](https://gist.github.com/isaacs/579814) for a quick and easy way to install Node.js and npm.
+This run on Node.js for servercode and React.js for the client.
 
-Once installed, clone the repository and install its dependencies running:
+To run on local machine, clone the repository and install its dependencies running:
 
     $ npm install
 
 ### Using your own credentials
+
 You will need to register your app and get your own credentials from the Spotify for Developers Dashboard.
 
-To do so, go to [your Spotify for Developers Dashboard](https://beta.developer.spotify.com/dashboard) and create your application. For the examples, we registered these Redirect URIs:
+To do so, go to [your Spotify for Developers Dashboard](https://beta.developer.spotify.com/dashboard) and create your application.
 
-* http://localhost:8888 (needed for the implicit grant flow)
-* http://localhost:8888/callback
+Once you have created your app, you will need to create the "config" folder and add "keys.js" in it with
 
-Once you have created your app, replace the `client_id`, `redirect_uri` and `client_secret` in the examples with the ones you get from My Applications.
+```
+module.exports = {
+  client_id: "YOUR CLIENT ID",
+  client_secret: "YOUR CLIENT SECRET",
+  redirect_uri: "http://localhost:5000/callback",
+  redirect: "http://localhost:3000/#"
+};
 
 ## Running the examples
-In order to run the different examples, open the folder with the name of the flow you want to try out, and run its `app.js` file. For instance, to run the Authorization Code example do:
+In order to run the app on local machine, use
 
-    $ cd authorization_code
-    $ node app.js
+    $ npm run dev
 
-Then, open `http://localhost:8888` in a browser.
+Then, open `http://localhost:3000` in a browser.
+```
