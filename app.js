@@ -47,7 +47,6 @@ app.get("/login", function(req, res) {
   try {
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
-    console.log("fine");
 
     // your application requests authorization
     var scope = "user-read-private user-read-email user-read-playback-state";
