@@ -1,6 +1,6 @@
 # ReactAPP Spotify Search
 
-This i an React App that fetch data from the Spotify wep api. The app uses Redux for state management, Materialize for design and spotify-web-api-js to fetch data easier.
+This i an React App that fetch data from the Spotify wep api. The app uses Redux for state management, Materialize for design and spotify-web-api-js to fetch data easier. The app is being hosted at heroku, [LINK](https://fast-taiga-88508.herokuapp.com/)
 
 ## Authenticating code
 
