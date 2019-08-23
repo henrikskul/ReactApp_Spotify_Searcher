@@ -14,7 +14,7 @@ To run on local machine, clone the repository and install its dependencies runni
 
     $ npm install
 
-### Using your own credentials
+### Usage
 
 You will need to register your app and get your own credentials from the Spotify for Developers Dashboard.
 
@@ -29,11 +29,12 @@ module.exports = {
   redirect_uri: "http://localhost:5000/callback",
   redirect: "http://localhost:3000/#"
 };
+```
 
 ## Running the examples
+
 In order to run the app on local machine, use
 
     $ npm run dev
 
 Then, open `http://localhost:3000` in a browser.
-```
