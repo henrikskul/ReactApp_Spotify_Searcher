@@ -13,6 +13,8 @@ This run on Node.js for servercode and React.js for the client.
 To run on local machine, clone the repository and install its dependencies running:
 
     $ npm install
+    $ cd client
+    $ npm install
 
 ### Usage
 
