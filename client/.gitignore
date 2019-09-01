@@ -11,6 +11,10 @@
 # production
 /build
 
+# a boilerplate
+client/src/components/spotify/boilerplate.js
+
+
 # misc
 .DS_Store
 .env.local

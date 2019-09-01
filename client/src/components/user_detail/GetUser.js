@@ -9,7 +9,7 @@ import {
   setTokenError
 } from "../../actions/userActions";
 
-import { setShowNowPlaying } from "../../actions/spotifyActions";
+import { setShowContent } from "../../actions/spotifyActions";
 
 const GetUser = ({
   user: {
@@ -24,7 +24,7 @@ const GetUser = ({
   getToken,
   getUserDetail,
   setTokenError,
-  setShowNowPlaying
+  setShowContent
 }) => {
   useEffect(() => {
     if (!tokenError) {
@@ -36,7 +36,7 @@ const GetUser = ({
         .getMe()
         .then(res => {
           getUserDetail(res);
-          setShowNowPlaying();
+          setShowContent();
         })
         .catch(err => {
           console.log(err.response);
@@ -81,7 +81,7 @@ GetUser.propTypes = {
   getToken: PropTypes.func.isRequired,
   getUserDetail: PropTypes.func.isRequired,
   setTokenError: PropTypes.func.isRequired,
-  setShowNowPlaying: PropTypes.func.isRequired
+  setShowContent: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -91,5 +91,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getUserDetail, getToken, setTokenError, setShowNowPlaying }
+  { getUserDetail, getToken, setTokenError, setShowContent }
 )(GetUser);

@@ -5,6 +5,7 @@ import LogIn from "../user_detail//LogIn";
 import NowPlaying from "../spotify/NowPlaying";
 import SearchTracks from "../spotify/SearchTracks";
 import SearchArtists from "../spotify/SearchArtists";
+import AvalibleDevices from "../spotify/AvalibleDevices";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       </div>
       <div className="row">
         <NowPlaying />
+        <AvalibleDevices />
       </div>
     </Fragment>
   );

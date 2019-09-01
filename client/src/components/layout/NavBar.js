@@ -7,7 +7,7 @@ const NavBar = () => {
     <nav>
       <div className="nav-wrapper">
         <a href="#!" className="brand-logo">
-          Logo
+          Spotify Search
         </a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>

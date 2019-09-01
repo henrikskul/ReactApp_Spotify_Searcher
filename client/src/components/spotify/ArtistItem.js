@@ -1,10 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ArtistItem = ({ artist, index }) => {
+import { connect } from "react-redux";
+
+import { setSong } from "../../actions/spotifyActions";
+
+const ArtistItem = ({ artist, index, user: { spotifyApi }, setSong }) => {
   const { images, name, followers, external_urls } = artist;
 
   const showImage = images[0] === undefined ? false : true;
+
+  const playArtist = () => {
+    spotifyApi
+      .play({ context_uri: artist.uri })
+      .then(res => {
+        setSong();
+      })
+      .catch(err => {
+        console.log(err.response);
+        console.log(err);
+      });
+  };
 
   //const showRow = index === 0 || 3 || 6 || 9 || 12 || 15 || 18 ? true : false;
 
@@ -20,9 +36,12 @@ const ArtistItem = ({ artist, index }) => {
           <br />
           <a href={external_urls.spotify}>Spotify url</a>
         </p>
-        <a href="#!" className="secondary-content">
-          <i className="material-icons">grade</i>
-        </a>
+        <button
+          onClick={playArtist}
+          className="secondary-content waves-effect waves-teal btn-flat"
+        >
+          <i className="material-icons">play_circle_filled</i>
+        </button>
       </li>
     </div>
   );
@@ -31,5 +50,13 @@ const ArtistItem = ({ artist, index }) => {
 ArtistItem.propTypes = {
   artist: PropTypes.object.isRequired
 };
+const mapStateToProps = state => ({
+  spotifyState: state.spotifyState,
+  user: state.user,
+  setSong: PropTypes.func.isRequired
+});
 
-export default ArtistItem;
+export default connect(
+  mapStateToProps,
+  { setSong }
+)(ArtistItem);

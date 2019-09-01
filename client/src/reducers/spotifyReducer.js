@@ -3,14 +3,21 @@ import {
   SET_LOADING,
   SET_ARTISTS,
   SET_TRACKS,
-  SHOW_NOW_PLAYING
+  SHOW_CONTENT,
+  SET_MY_DEVICES,
+  SET_SONG,
+  SET_ACTIVE_DEVICE
 } from "../actions/Types";
 
 const initialstate = {
   nowPlaying: {},
-  showNowPlaying: false,
+  showContent: false,
+  showSong: false,
   artists: [],
   tracks: [],
+  myDevices: [],
+  showDevices: false,
+  shiftActiveDevice: false,
   loading: false
 };
 
@@ -20,12 +27,20 @@ export default (state = initialstate, action) => {
       return {
         ...state,
         nowPlaying: action.payload,
+        showSong: false,
         loading: false
       };
-    case SHOW_NOW_PLAYING:
+
+    case SET_SONG:
       return {
         ...state,
-        showNowPlaying: true
+        showSong: true
+      };
+
+    case SHOW_CONTENT:
+      return {
+        ...state,
+        showContent: true
       };
 
     case SET_ARTISTS:
@@ -46,6 +61,21 @@ export default (state = initialstate, action) => {
       return {
         ...state,
         loading: true
+      };
+
+    case SET_MY_DEVICES:
+      return {
+        ...state,
+        myDevices: action.payload,
+        showDevices: true,
+        shiftActiveDevice: false,
+        loading: false
+      };
+
+    case SET_ACTIVE_DEVICE:
+      return {
+        ...state,
+        shiftActiveDevice: true
       };
 
     default:
